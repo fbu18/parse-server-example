@@ -26,6 +26,10 @@ var api = new ParseServer({
     classNames: ["Attraction", "Trip", "Message"] // List of classes to support for query subscriptions
   }
 });
+// Initialize a LiveQuery server instance, app is the express app of your Parse Server
+let httpServer = require('http').createServer(app);
+httpServer.listen(port);
+var parseLiveQueryServer = ParseServer.createLiveQueryServer(httpServer);
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
 // javascriptKey, restAPIKey, dotNetKey, clientKey
