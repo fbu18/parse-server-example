@@ -20,7 +20,7 @@ var api = new ParseServer({
   push: {
   android: {
     apiKey: 'AIzaSyDtP54XwGaqah_x0HQ5VRbfPEYotEZymp8' // The Server API Key of FCM
-  },
+  }
   liveQuery: {
     classNames: ["Attraction", "Trip", "Message"] // List of classes to support for query subscriptions
   }
