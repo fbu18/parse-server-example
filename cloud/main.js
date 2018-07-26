@@ -10,7 +10,7 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
   // set audience of push notification and data
   var pushQuery = new Parse.Query(Parse.Installation);
   if (receiver) {
-    pushQuery.equalTo("user", receiver);
+    pushQuery.equalTo("user", receiver.getUsername());
     console.log(receiver);
   } else {
     pushQuery.equalTo("deviceType", "android");
