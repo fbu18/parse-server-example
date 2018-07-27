@@ -11,17 +11,18 @@ if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
 
+if (process.env.FCM_API_KEY) {
+   pushConfig['android'] = { 
+   apiKey: process.env.FCM_API_KEY || ''};
+}
+
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://heroku_67n5whgs:jdmnb30gfth20hdmcuiso692h4@ds235461.mlab.com:35461/heroku_67n5whgs',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'travelapp-fbu18',
   masterKey: process.env.MASTER_KEY || 'supersecretkey#2', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://travelapp-fbu18.herokuapp.com/parse',  // Don't forget to change to https if needed
-  push: {
-  android: {
-    apiKey: 'AIzaSyDtP54XwGaqah_x0HQ5VRbfPEYotEZymp8' // The Server API Key of FCM
-    }
-  },
+  push: pushConfig,,
   liveQuery: {
     classNames: ["Attraction", "Trip", "Message"] // List of classes to support for query subscriptions
   }
