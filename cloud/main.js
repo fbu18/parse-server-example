@@ -10,15 +10,12 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
   // use to custom tweak whatever payload you wish to send
   var pushQuery = new Parse.Query(Parse.Installation);
   
-//   if (receiver) {
-//     pushQuery.equalTo("username", receiver);
-//     console.log("workingggggg");
-//   } else {
-//     pushQuery.equalTo("deviceType", "android");
-//   }
-  
-  pushQuery.equalTo("username", receiver);
-
+  if (receiver) {
+    pushQuery.equalTo("username", receiver);
+    console.log("workingggggg");
+  } else {
+    pushQuery.equalTo("deviceType", "android");
+  }
   var payload = {};
 
   if (customData) {
