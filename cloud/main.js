@@ -19,7 +19,7 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
   var payload = {};
 
   if (newData) {
-      payload.mydata = newData;
+      payload.alert = newData;
   }
 
   console.log(pushQuery.toString());
