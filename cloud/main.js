@@ -5,7 +5,7 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
   var user = request.user;
 
   var customData = params.customData;
-  var receiver = params.reciever;
+  var receiver = params.receiver;
 
   // use to custom tweak whatever payload you wish to send
   var pushQuery = new Parse.Query(Parse.Installation);
