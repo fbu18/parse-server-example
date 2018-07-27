@@ -11,7 +11,7 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
   var pushQuery = new Parse.Query(Parse.Installation);
   
   if (receiver) {
-    pushQuery.equalTo("currentUserId", receiver);
+    pushQuery.equalTo("user", receiver);
     console.log(receiver);
   } else {
     pushQuery.equalTo("deviceType", "android");
