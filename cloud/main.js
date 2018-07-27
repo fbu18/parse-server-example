@@ -9,8 +9,7 @@ Parse.Cloud.define('sendPushMessage', function(request, response) {
 
   // use to custom tweak whatever payload you wish to send
   var pushQuery = new Parse.Query(Parse.Installation);
-
-  pushQuery.equalTo("deviceType", "android");
+  
   if (receiver) {
     pushQuery.equalTo("currentUserId", receiver);
     console.log(receiver);
