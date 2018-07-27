@@ -12,7 +12,7 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
   
   if (receiver) {
     pushQuery.equalTo("username", receiver);
-    console.log("success");
+    console.log(pushQuery.toString());
   } else {
     pushQuery.equalTo("deviceType", "android");
   }
