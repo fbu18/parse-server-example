@@ -1,4 +1,4 @@
-Parse.Cloud.define('sendPushMessage', function(request, response) {
+Parse.Cloud.define('pushNewMessage', function(request, response) {
 
   // request has 2 parameters: params passed by the client and the authorized user
   var params = request.params;
