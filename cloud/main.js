@@ -1,28 +1,31 @@
-Parse.Cloud.define('pushNewMessage', function(request, response) {
+Parse.Cloud.define('sendPushMessage', function(request, response) {
 
-//parameters: params passed by the client and the authorized user
+  // request has 2 parameters: params passed by the client and the authorized user
   var params = request.params;
   var user = request.user;
 
-  var newData = params.newData;
-  var receiver = params.receiver;
+  var customData = params.customData;
+  var launch = params.launch;
+  var broadcast = params.broadcast;
 
-  // set audience of push notification and data
+  // use to custom tweak whatever payload you wish to send
   var pushQuery = new Parse.Query(Parse.Installation);
-  if (receiver) {
-    pushQuery.equalTo("username", receiver);
-    console.log(receiver);
-  } else {
-    pushQuery.equalTo("deviceType", "android");
-  }
+  pushQuery.equalTo("deviceType", "android");
 
   var payload = {};
 
-  if (newData) {
-      payload.alert = newData;
+  if (customData) {
+      payload.customdata = customData;
+  }
+  else if (launch) {
+      payload.launch = launch;
+  }
+  else if (broadcast) {
+      payload.broadcast = broadcast;
   }
 
-  console.log(pushQuery.toString());
+  // Note that useMasterKey is necessary for Push notifications to succeed.
+
   Parse.Push.send({
   where: pushQuery,      // for sending to a specific channel
   data: payload,
@@ -34,3 +37,4 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
 
   response.success('success');
 });
+
