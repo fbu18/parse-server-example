@@ -22,7 +22,7 @@ var api = new ParseServer({
   appId: process.env.APP_ID || 'travelapp-fbu18',
   masterKey: process.env.MASTER_KEY || 'supersecretkey#2', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://travelapp-fbu18.herokuapp.com/parse',  // Don't forget to change to https if needed
-  push: pushConfig,,
+  push: pushConfig,
   liveQuery: {
     classNames: ["Attraction", "Trip", "Message"] // List of classes to support for query subscriptions
   }
