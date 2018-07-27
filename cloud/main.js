@@ -22,12 +22,6 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
   if (customData) {
       payload.customdata = customData;
   }
-  else if (launch) {
-      payload.launch = launch;
-  }
-  else if (broadcast) {
-      payload.broadcast = broadcast;
-  }
 
   // Note that useMasterKey is necessary for Push notifications to succeed.
 
