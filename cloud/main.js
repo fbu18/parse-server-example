@@ -17,11 +17,16 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
     pushQuery.equalTo("deviceType", "android");
   }
   
+  var payload = {};
+  if(customData){
+    payload.customData = customData;
+  }
+  
   // Note that useMasterKey is necessary for Push notifications to succeed.
 
   Parse.Push.send({
   where: pushQuery,      // for sending to a specific channel
-  data: {"trip", customData},
+  data: payload,
   }, { success: function() {
      console.log("#### PUSH OK");
   }, error: function(error) {
