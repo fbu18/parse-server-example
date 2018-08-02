@@ -6,6 +6,7 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
 
   var customData = params.customData;
   var receiver = params.receiver;
+  var message = params.message;
 
   // use to custom tweak whatever payload you wish to send
   var pushQuery = new Parse.Query(Parse.Installation);
@@ -20,6 +21,10 @@ Parse.Cloud.define('pushNewMessage', function(request, response) {
   var payload = {};
   if(customData){
     payload.customData = customData;
+  }
+  
+  if(message){
+    payload.message = message;
   }
   
   // Note that useMasterKey is necessary for Push notifications to succeed.
